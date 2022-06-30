@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mon snake</title>
+	</head>
+	<body>
+		<button type="button" name="myButton">Cliquez sur moi !</button>
+
+		<div id= "game">
+			<canvas id="canvasSnake" width="600" height="450"> 
+				Your browser does not support the canvas feature
+			</canvas>
+		</div>
+
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+		<script>			
+			$(document).ready(function() {
+				
+				// Faites un snake ! :)
+				
+				//snake game
+				var canvas = document.getElementById("canvasSnake");
+				var ctx = canvas.getContext("2d");
+				var width = canvas.width;
+				var height = canvas.height;
+				var dx = 10;
+				var dy = 0;
+				var x = 10;
+				var y = 10;
+				//snake food
+				var snakeFood = {
+					x: Math.floor(Math.random() * (width - dx)) + dx,
+					y: Math.floor(Math.random() * (height - dy)) + dy
+				};
+				var snake = [];
+				var snakeSize = 10;
+				var snakeColor = "green";
+				var snakeSpeed = 100;
+				var snakeDirection = "right";
+				var snakeFoodColor = "red";
+				var snakeFoodSize = 10;
+				var snakeFoodSpeed = 100;
+				var snakeFoodDirection = "right";
+				var snakeFoodInterval;
+
+				var foodDrawed = false;
+
+				function drawSnake() {
+					ctx.clearRect(0, 0, width, height);
+					ctx.fillStyle = snakeColor;
+					ctx.fillRect(x, y, snakeSize, snakeSize);
+					if(foodDrawed == false){
+						drawSnakeFood();
+					}
+				}
+
+				function drawSnakeFood() {
+					snakeFood.x = Math.floor(Math.random() * (width - snakeFoodSize)) + snakeFoodSize;
+					snakeFood.y = Math.floor(Math.random() * (height - snakeFoodSize)) + snakeFoodSize;
+					ctx.fillStyle = snakeFoodColor;
+					ctx.fillRect(snakeFood.x, snakeFood.y, snakeFoodSize, snakeFoodSize);
+					foodDrawed = true;
+				}
+
+				//check for user input
+				$(document).keydown(function(e) {
+					if (e.keyCode == 37 && snakeDirection != "right") {
+						snakeDirection = "left";
+					}
+					if (e.keyCode == 38 && snakeDirection != "down") {
+						snakeDirection = "up";
+					}
+					if (e.keyCode == 39 && snakeDirection != "left") {
+						snakeDirection = "right";
+					}
+					if (e.keyCode == 40 && snakeDirection != "up") {
+						snakeDirection = "down";
+					}
+					moveSnake();
+				});
+
+				//snake movement
+				function moveSnake() {
+					if (snakeDirection == "left") {
+						dx = -10;
+						dy = 0;
+					}
+					if (snakeDirection == "up") {
+						dx = 0;
+						dy = -10;
+					}
+					if (snakeDirection == "right") {
+						dx = 10;
+						dy = 0;
+					}
+					if (snakeDirection == "down") {
+						dx = 0;
+						dy = 10;
+					}
+					x += dx;
+					y += dy;
+					if (x < 0) {
+						x = width - snakeSize;
+					}
+					if (x > width - snakeSize) {
+						x = 0;
+					}
+					if (y < 0) {
+						y = height - snakeSize;
+					}
+					if (y > height - snakeSize) {
+						y = 0;
+					}
+					snake.push({x: x, y: y});
+					if (snake.length > snakeSize) {
+						snake.shift();
+					}
+					if (x == snakeFood.x && y == snakeFood.y) {
+						snakeSize++;
+						drawSnakeFood();
+					}
+					drawSnake();
+				}
+
+				//call move snake every 100ms
+				setInterval(moveSnake, snakeSpeed);
+
+				//call collision detection every 100ms
+				setInterval(collisionDetection, snakeSpeed);
+
+				//collision with food
+				function collisionFood() {
+					if (x == snakeFood.x && y == snakeFood.y) {
+						foodDrawed = false;
+						drawSnakeFood();
+					}
+				}
+
+				//call collision food every 100ms
+				setInterval(collisionFood, snakeFoodSpeed);
+				
+				drawSnakeFood();
+			});			
+      </script>
+   </head>
+		</script>
+	</body>
+</html>
