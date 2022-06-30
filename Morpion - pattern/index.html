@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Morpion</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        .carre {
+            width: 150px;
+            height: 150px;
+        }
+
+        #titre {
+            left: 0px;
+            top: 0px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            font-family: 'Lobster', cursive;
+            font-size: 80px;
+            padding-top: 10px;
+            color: black;
+        }
+
+        #turn {
+            left: 0px;
+            top: 0px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+            padding-top: 10px;
+            color: black;
+        }
+
+        #a1 {
+            border-right: solid 10px black;
+            border-bottom: solid 10px black;
+        }
+
+        #a2 {
+            border-right: solid 10px black;
+            border-bottom: solid 10px black;
+            border-left: solid 10px black;
+            background-position: center; /* ligne à supprimer */
+        }
+
+        #a3 {
+            border-bottom: solid 10px black;
+            border-left: solid 10px black;
+            background-position: right; /* ligne à supprimer */
+        }
+
+        #b1 {
+            border-right: solid 10px black;
+            border-bottom: solid 10px black;
+            border-top: solid 10px black;
+        }
+
+        #b2 {
+            border: solid 10px black;
+
+        }
+
+        #b3 {
+            border-left: solid 10px black;
+            border-bottom: solid 10px black;
+            border-top: solid 10px black;
+        }
+
+        #c1 {
+            border-right: solid 10px black;
+            border-top: solid 10px black;
+        }
+
+        #c2 {
+            border-right: solid 10px black;
+            border-left: solid 10px black;
+            border-top: solid 10px black;
+
+        }
+
+        #c3 {
+            border-left: solid 10px black;
+            border-top: solid 10px black;
+        }
+
+        .jeu {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        #center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #rejouer {
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .bouton {
+            margin-bottom: 20px;
+            padding: 20px;
+            font-family: 'Lobster', cursive;
+            font-size: 80px;
+            background-color: #C3C2C2;
+            border-radius: 20px;
+            border: none;
+        }
+    </style>
+</head>
+<body onload="Initialisation();">
+	<div id="titre">Morpion</div>
+    <h4 id="turn"></h4>
+	<div class="jeu">
+		<table id="center">
+			<tbody>
+			<tr>
+				<td class="carre" id="a1" onclick="jouer('a1');"></td>
+				<td class="carre" id="a2" onclick="jouer('a2');"></td>
+				<td class="carre" id="a3" onclick="jouer('a3');"></td>
+			</tr>
+			<tr>
+				<td class="carre" id="b1" onclick="jouer('b1');"></td>
+				<td class="carre" id="b2" onclick="jouer('b2');"></td>
+				<td class="carre" id="b3" onclick="jouer('b3');"></td>
+			</tr>
+			<tr>
+				<td class="carre" id="c1" onclick="jouer('c1');"></td>
+				<td class="carre" id="c2" onclick="jouer('c2');"></td>
+				<td class="carre" id="c3" onclick="jouer('c3');"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="rejouer">
+		<button type="button" class="bouton" onclick="window.location.reload();">Rejouer</button>
+	</div>
+	<script src="morpion.js"></script>
+</body>
+</html>
