@@ -1,42 +1,48 @@
-body{
-	margin:0;
-	background-image: url("bg.png");
+body {
+  margin: 0;
+  background-image: url("bg.png");
 }
-.red{
-	border-color: tomato!important; 
+.red {
+  border-color: tomato !important;
 }
-.green{
-	border-color: green!important; 
-	opacity: 0.60;
+.green {
+  border-color: green !important;
+  opacity: 0.6;
 }
-.container{
-	padding: 1px;
-	margin-top: 60px;
-	margin-left: auto;
-	margin-right: auto;
-	width:672px;
-	height:480px;
-	background-color:  rgba(200,200,200,0.6);
-	/* ombres */
-	-webkit-box-shadow: 2px 2px 73px -4px rgba(0,0,0,0.75);
-	-moz-box-shadow: 2px 2px 73px -4px rgba(0,0,0,0.75);
-	box-shadow: 2px 2px 73px -4px rgba(0,0,0,0.75); 
+.container {
+  padding: 1px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 672px;
+  height: 480px;
+  background-color: rgba(200, 200, 200, 0.6);
+  /* ombres */
+  -webkit-box-shadow: 2px 2px 73px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 73px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 73px -4px rgba(0, 0, 0, 0.75);
 }
 .container div {
-	cursor: pointer;
-	float:left;
-	width:80px;
-	height: 116px;
-	border-color: #ccc; 
-	border-style: solid;
-    border-width: 2px;
+  cursor: pointer;
+  float: left;
+  width: 80px;
+  height: 116px;
+  border-color: #ccc;
+  border-style: solid;
+  border-width: 2px;
 }
-.container div:hover {
-	opacity: 0.60;
+.container .movable:hover {
+  opacity: 0.6;
 }
-#demo{
-	width:100px;
-    margin-left: auto;
-	margin-right: auto;
-
+.container .hide {
+  opacity: 0;
+}
+.container .selected {
+  border-color: #000;
+  opacity: 0.9;
+}
+#demo {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
